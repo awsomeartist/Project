@@ -15,7 +15,7 @@ class LinearModel(torch.nn.Module):
 model = LinearModel()
 
 criterion = torch.nn.MSELoss(size_average=False)
-optimizer = torch.optim.SGD(model.parameters(), lr=0.001)
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 
 for epoch in range(1000):
     y_pred = model(x_data)
