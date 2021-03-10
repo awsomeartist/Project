@@ -16,7 +16,7 @@ class DiabetesDataset(Dataset):
     def __len__(self):
         return self.len
 
-dataset = DiabetesDataset('./learnpytorch/diabetes.csv.gz')
+dataset = DiabetesDataset('./learnpytorch/data/diabetes.csv.gz')
 train_loader = DataLoader(dataset=dataset,
                             batch_size=32,
                             shuffle=True,
