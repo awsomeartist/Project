@@ -64,7 +64,7 @@ for t in range(10):
         optimizer.step()
 
 # 保存下训练好的模型,省得下次再重新训练
-torch.save(model,'./my_handwrite_recognize_model.pt')
+torch.save(model,'./number/my_handwrite_recognize_model.pt')
 
 
 ##########现在你已经训练好了#################
