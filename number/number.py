@@ -2,14 +2,18 @@
 import torch
 import torchvision
 from torchvision import datasets, transforms
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("using {} device.".format(device))
+
 # 1. 加载MNIST手写数字数据集数据和标签，transform表示对每个数据进行变换，这里将其变为Tensor，Tensor是pytorch中存储数据的主要格式
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, ), (0.5, ))])     
                                                                                                                                                                                                     
-trainset = datasets.MNIST(root = './data', train = True, download = False, transform = transform)    #下载训练集存放在当前data文件夹中
+trainset = datasets.MNIST(root = '../Dataset', train = True, download = False, transform = transform)    #下载训练集存放在当前data文件夹中
 
 trainsetloader = torch.utils.data.DataLoader(trainset, batch_size = 100, shuffle = True)           #batch表示一次性喂给模型多少数据
 
-testset = datasets.MNIST(root= './data', train = False, download = False, transform = transform)      #下载测试集存放在当前data文件夹中
+testset = datasets.MNIST(root= '../Dataset', train = False, download = False, transform = transform)      #下载测试集存放在当前data文件夹中
 
 testsetloader = torch.utils.data.DataLoader(testset, batch_size = 100, shuffle = True)             #shuffle表示是否打乱数据顺序
 
