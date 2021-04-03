@@ -5,6 +5,9 @@ from torch.utils.data import DataLoader
 import torch.nn.functional as F
 import torch.optim as optim
 
+# train with gpu
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("using {} device.".format(device))
 
 batch_size = 64
 transform = transforms.Compose([
@@ -12,7 +15,7 @@ transform = transforms.Compose([
             transforms.Normalize((0.1307, ), (0.3081, ))
             ])
 
-train_dataset = datasets.MNIST( root='./data',
+train_dataset = datasets.MNIST( root='../Dataset',
                                 train=True,
                                 download=False,
                                 transform=transform)
@@ -21,7 +24,7 @@ train_loader = DataLoader(train_dataset,
                             shuffle=True,
                             batch_size=batch_size)
 
-test_dataset = datasets.MNIST(root='./data',
+test_dataset = datasets.MNIST(root='../Dataset',
                                 train=False,
                                 download=False,
                                 transform=transform)
